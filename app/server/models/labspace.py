@@ -12,7 +12,7 @@ class LabSpaceSchema(BaseModel):
             "example": {
                 "title": "Physics Lab",
                 "description": "A lab for advanced physics experiments.",
-                "imgSrc": "/static/icons/PhysicsLab.png",
+                "imgSrc": "http://localhost:8000/static/images/PhysicsLab.png",
                 "altText": "Image of Physics Lab"
             }
         }
@@ -29,7 +29,7 @@ class UpdateLabSpaceModel(BaseModel):
             "example": {
                 "title": "Biology Lab",
                 "description": "A lab for biology research.",
-                "imgSrc": "/static/icons/BiologyLab.png",
+                "imgSrc": "http://localhost:8000/static/images/BiologyLab.png",
                 "altText": "Image of Biology Lab"
             }
         }

@@ -5,6 +5,7 @@ from server.database.reservation import (
     delete_reservation,
     retrieve_reservation,
     retrieve_reservations,
+    retrieve_reservations_by_user,
     update_reservation,
 )
 
@@ -70,3 +71,11 @@ async def delete_reservation_data(id: str, current_user: dict = Depends(get_curr
         "An error occurred", 404, "Reservation with id {0} doesn't exist".format(
             id)
     )
+
+
+@router.get("/user/{user_id}", response_description="Reservations retrieved for a specific user")
+async def get_reservations_by_user(user_id: str, current_user: dict = Depends(get_current_user)):
+    reservations = await retrieve_reservations_by_user(user_id)
+    if reservations:
+        return ResponseModel(reservations, "Reservations data retrieved successfully")
+    return ResponseModel(reservations, "Empty list returned")
