@@ -7,6 +7,8 @@ reservation_collection = database.get_collection("reservations_collection")
 def reservation_helper(reservation) -> dict:
     return {
         "id": str(reservation["_id"]),
+        "labSpaceId": reservation["labSpaceId"],
+        "userId": reservation["userId"],
         "full_name": reservation["full_name"],
         "identification_number": reservation["identification_number"],
         "email": reservation["email"],
@@ -58,3 +60,10 @@ async def delete_reservation(id: str):
     if reservation:
         await reservation_collection.delete_one({"_id": ObjectId(id)})
         return True
+
+
+async def retrieve_reservations_by_user(user_id: str):
+    reservations = []
+    async for reservation in reservation_collection.find({"userId": user_id}):
+        reservations.append(reservation_helper(reservation))
+    return reservations

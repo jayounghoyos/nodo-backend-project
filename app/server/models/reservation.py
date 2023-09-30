@@ -2,6 +2,8 @@ from pydantic import BaseModel, Field
 
 
 class ReservationSchema(BaseModel):
+    labSpaceId: str = Field(...)
+    userId: str = Field(...)
     full_name: str = Field(...)
     identification_number: str = Field(...)
     email: str = Field(...)
@@ -17,6 +19,8 @@ class ReservationSchema(BaseModel):
     class Config:
         schema_extra = {
             "example": {
+                "labSpaceId": "1234567890",
+                "userId": "1234567890",
                 "full_name": "John Doe",
                 "identification_number": "12345678",
                 "email": "john.doe@example.com",

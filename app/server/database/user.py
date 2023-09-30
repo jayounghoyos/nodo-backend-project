@@ -10,7 +10,6 @@ def user_helper(user) -> dict:
         "name": user["name"],
         "email": user["email"],
         "password": user.get("password", ""),
-        "points": user["points"],
     }
 
 

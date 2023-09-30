@@ -6,7 +6,6 @@ class UserSchema(BaseModel):
     name: str = Field(...)
     email: EmailStr = Field(...)
     password: str = Field(...)
-    points: int = Field(default=0)
 
     class Config:
         schema_extra = {
@@ -22,7 +21,6 @@ class UpdateUserModel(BaseModel):
     name: Optional[str]
     email: Optional[EmailStr]
     password: Optional[str]
-    points: Optional[int]
 
     class Config:
         schema_extra = {
